@@ -1,0 +1,8 @@
+# This file was auto generated, take caution if manually editing.
+plugins: offline_scannet,scene_recon
+env_vars:
+  enable_offload: true
+  enable_alignment: false
+  enable_verbose_errors: false
+  enable_pre_sleep: false
+  ILLIXR_DATA: /home/anhiti/Open3DScripts/original/0005

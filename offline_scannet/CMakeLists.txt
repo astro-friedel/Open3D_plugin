@@ -1,0 +1,26 @@
+# Set source files for the offline_scannet plugin
+set(OFFLINE_SCANNET_SOURCES 
+    plugin.cpp
+    data_loading.hpp
+    csv_iterator.hpp
+)
+
+# Define the plugin name
+set(PLUGIN_NAME plugin.offline_scannet${ILLIXR_BUILD_SUFFIX})
+
+# Create a shared library for the plugin
+add_library(${PLUGIN_NAME} SHARED ${OFFLINE_SCANNET_SOURCES})
+find_package(OpenCV REQUIRED)
+include_directories(${OpenCV_INCLUDE_DIRS})
+
+find_package(OpenCV REQUIRED)
+target_link_libraries(plugin.offline_scannet.opt ${OpenCV_LIBS})
+
+# Include ILLIXR headers
+target_include_directories(${PLUGIN_NAME} PRIVATE ${ILLIXR_SOURCE_DIR}/include)
+
+# Set required C++ standard
+target_compile_features(${PLUGIN_NAME} PRIVATE cxx_std_17)
+
+# Install the plugin
+install(TARGETS ${PLUGIN_NAME} DESTINATION lib)
