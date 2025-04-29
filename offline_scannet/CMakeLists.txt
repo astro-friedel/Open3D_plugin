@@ -1,5 +1,7 @@
+cmake_minimum_required(VERSION 3.22)
+
 # Set source files for the offline_scannet plugin
-set(OFFLINE_SCANNET_SOURCES 
+set(OFFLINE_SCANNET_SOURCES
     plugin.cpp
     data_loading.hpp
     csv_iterator.hpp
@@ -13,7 +15,6 @@ add_library(${PLUGIN_NAME} SHARED ${OFFLINE_SCANNET_SOURCES})
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-find_package(OpenCV REQUIRED)
 target_link_libraries(plugin.offline_scannet.opt ${OpenCV_LIBS})
 
 # Include ILLIXR headers

@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.22)
 project(scene_recon_plugin)
 
 # Required dependencies
@@ -8,7 +8,7 @@ find_package(Eigen3 REQUIRED)
 find_package(CUDAToolkit REQUIRED)
 
 # Plugin sources
-set(SCENE_RECON_SOURCES 
+set(SCENE_RECON_SOURCES
     plugin.cpp
     plugin.hpp
     ${CMAKE_SOURCE_DIR}/include/illixr/data_format/scene_recon_type.hpp
@@ -21,7 +21,7 @@ set(PLUGIN_NAME plugin.scene_recon${ILLIXR_BUILD_SUFFIX})
 add_library(${PLUGIN_NAME} SHARED ${SCENE_RECON_SOURCES})
 
 # Include directories
-target_include_directories(${PLUGIN_NAME} PRIVATE 
+target_include_directories(${PLUGIN_NAME} PRIVATE
     ${ILLIXR_SOURCE_DIR}/include
     ${OpenCV_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIR}
@@ -31,8 +31,8 @@ target_include_directories(${PLUGIN_NAME} PRIVATE
 target_compile_features(${PLUGIN_NAME} PRIVATE cxx_std_17)
 
 # Link all necessary libraries
-target_link_libraries(${PLUGIN_NAME} 
-    PRIVATE 
+target_link_libraries(${PLUGIN_NAME}
+    PRIVATE
     # Open3D::Open3D
     CUDA::cudart
     ${OpenCV_LIBS}
@@ -50,7 +50,7 @@ install(TARGETS ${PLUGIN_NAME} DESTINATION lib)
 # # find_package(fmt REQUIRED)
 
 # # Plugin sources
-# set(SCENE_RECON_SOURCES 
+# set(SCENE_RECON_SOURCES
 #     plugin.cpp
 #     plugin.hpp
 #     ${CMAKE_SOURCE_DIR}/include/illixr/data_format/scene_recon_type.hpp
@@ -65,7 +65,7 @@ install(TARGETS ${PLUGIN_NAME} DESTINATION lib)
 # add_library(${PLUGIN_NAME} SHARED ${SCENE_RECON_SOURCES})
 
 # # Include directories
-# target_include_directories(${PLUGIN_NAME} PRIVATE 
+# target_include_directories(${PLUGIN_NAME} PRIVATE
 #     ${ILLIXR_SOURCE_DIR}/include
 #     ${OpenCV_INCLUDE_DIRS}
 #     ${EIGEN3_INCLUDE_DIR}
@@ -76,8 +76,8 @@ install(TARGETS ${PLUGIN_NAME} DESTINATION lib)
 # target_compile_features(${PLUGIN_NAME} PRIVATE cxx_std_17)
 
 # # Link all necessary libraries
-# target_link_libraries(${PLUGIN_NAME} 
-#     PRIVATE 
+# target_link_libraries(${PLUGIN_NAME}
+#     PRIVATE
 #     CUDA::cudart
 #     ${OpenCV_LIBS}
 # )
