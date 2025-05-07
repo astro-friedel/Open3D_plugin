@@ -1,5 +1,6 @@
 cmake_minimum_required(VERSION 3.22)
 
+project(Offline_Scannet)
 # Set source files for the offline_scannet plugin
 set(OFFLINE_SCANNET_SOURCES
     plugin.cpp

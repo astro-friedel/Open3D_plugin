@@ -1,5 +1,5 @@
 cmake_minimum_required(VERSION 3.22)
-project(scene_recon_plugin)
+project(Scene_Reconstruction)
 
 # Required dependencies
 find_package(OpenCV REQUIRED)
