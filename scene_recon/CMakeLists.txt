@@ -1,6 +1,14 @@
 cmake_minimum_required(VERSION 3.22)
 project(Scene_Reconstruction)
 
+option(ILLIXR_INCLUDE_DIR "The root directory for ILLIXR includes")
+option(ILLIXR_BUILD_SUFFIX "The build suffix for ILLIXR")
+if(NOT ILLIXR_INCLUDE_DIR)
+    message(FATAL_ERROR "ILLIXR_INCLUDE_DIR must be given")
+elseif(NOT ILLIXR_BUILD_SUFFIX)
+    message(FATAL_ERROR "ILLIXR_BUILD_SUFFIX must be given")
+endif()
+
 # Required dependencies
 find_package(OpenCV REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -22,7 +30,7 @@ add_library(${PLUGIN_NAME} SHARED ${SCENE_RECON_SOURCES})
 
 # Include directories
 target_include_directories(${PLUGIN_NAME} PRIVATE
-    ${ILLIXR_SOURCE_DIR}/include
+    ${ILLIXR_INCLUDE_DIR}
     ${OpenCV_INCLUDE_DIRS}
     ${EIGEN3_INCLUDE_DIR}
 )
