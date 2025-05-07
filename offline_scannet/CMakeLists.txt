@@ -22,7 +22,7 @@ set(PLUGIN_NAME plugin.offline_scannet${ILLIXR_BUILD_SUFFIX})
 
 # Create a shared library for the plugin
 add_library(${PLUGIN_NAME} SHARED ${OFFLINE_SCANNET_SOURCES})
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
 target_link_libraries(${PLUGIN_NAME} ${OpenCV_LIBS})

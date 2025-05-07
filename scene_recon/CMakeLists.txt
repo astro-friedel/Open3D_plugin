@@ -10,7 +10,7 @@ elseif(NOT ILLIXR_BUILD_SUFFIX)
 endif()
 
 # Required dependencies
-find_package(OpenCV REQUIRED)
+find_package(OpenCV 4 REQUIRED)
 find_package(Eigen3 REQUIRED)
 # find_package(Open3D REQUIRED)
 find_package(CUDAToolkit REQUIRED)
@@ -19,7 +19,7 @@ find_package(CUDAToolkit REQUIRED)
 set(SCENE_RECON_SOURCES
     plugin.cpp
     plugin.hpp
-    ${CMAKE_SOURCE_DIR}/include/illixr/data_format/scene_recon_type.hpp
+    illixr/data_format/scene_recon_type.hpp
 )
 
 # Define plugin name
