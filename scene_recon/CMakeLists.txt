@@ -19,7 +19,7 @@ find_package(CUDAToolkit REQUIRED)
 set(SCENE_RECON_SOURCES
     plugin.cpp
     plugin.hpp
-    illixr/data_format/scene_recon_type.hpp
+    ${ILLIXR_INCLUDE_DIR}/illixr/data_format/scene_recon_type.hpp
 )
 
 # Define plugin name
