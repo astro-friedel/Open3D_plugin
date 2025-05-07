@@ -16,7 +16,7 @@ add_library(${PLUGIN_NAME} SHARED ${OFFLINE_SCANNET_SOURCES})
 find_package(OpenCV REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-target_link_libraries(plugin.offline_scannet.opt ${OpenCV_LIBS})
+target_link_libraries(${PLUGIN_NAME} ${OpenCV_LIBS})
 
 # Include ILLIXR headers
 target_include_directories(${PLUGIN_NAME} PRIVATE ${ILLIXR_SOURCE_DIR}/include)
