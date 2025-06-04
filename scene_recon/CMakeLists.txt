@@ -16,22 +16,7 @@ endif()
 set(CMAKE_C_COMPILER ${CLANG_EXE})
 set(CMAKE_CXX_COMPILER ${CLANG_CXX_EXE})
 
-include(ExternalProject)
-externalproject_add(filament
-                    GIT_REPOSITORY https://github.com/ILLIXR/filament.git
-                    GIT_TAG 5112e4dd5975dfb5001b5b3322d7857361263c39
-                    PREFIX ${CMAKE_BINARY_DIR}/_deps/filament
-                    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} _DCMAKE_BUILD_TYPE=Release -DUSE_STATIC_LIBCXX=OFF -DFILAMENT_SKIP_SAMPLES=ON -DFILAMENT_USE_EXTERNAL_GLES3=ON -DFILAMENT_SUPPORTS_WAYLAND=ON -DFILAMENT_SUPPORTS_VULKAN=ON -DFILAMENT_BUILD_FILAMAT=ON -DCMAKE_C_COMPILER=${CLANG_EXE} -DCMAKE_CXX_COMPILER=${CLANG_CXX_EXE}
-)
-
-externalproject_add(open3d
-                    GIT_REPOSITORY
-                    GIT_TAG
-                    PREFIX ${CMAKE_BINARY_DIR}/_deps/open3d
-                    CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_INSTALL_PREFIX} -DCMAKE_C_COMPILER=${CLANG_EXE} -DCMAKE_CXX_COMPILER=${CLANG_CXX_EXE}
-                    DEPENDS filament
-)
-
+find_package(Open3D REQUIRED CONFIG)
 # Required dependencies
 find_package(OpenCV 4 REQUIRED)
 find_package(Eigen3 REQUIRED)
@@ -63,8 +48,8 @@ target_compile_features(${PLUGIN_NAME} PRIVATE cxx_std_17)
 
 # Link all necessary libraries
 target_link_libraries(${PLUGIN_NAME}
-    PRIVATE
-    # Open3D::Open3D
+    PUBLIC
+    Open3D::Open3D
     CUDA::cudart
     ${OpenCV_LIBS}
 )

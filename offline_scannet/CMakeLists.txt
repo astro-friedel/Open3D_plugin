@@ -9,6 +9,7 @@ if(NOT ILLIXR_INCLUDE_DIR)
 elseif(NOT ILLIXR_BUILD_SUFFIX)
     message(FATAL_ERROR "ILLIXR_BUILD_SUFFIX must be given")
 endif()
+find_package(Open3D REQUIRED CONFIG)
 
 # Set source files for the offline_scannet plugin
 set(OFFLINE_SCANNET_SOURCES
@@ -25,7 +26,7 @@ add_library(${PLUGIN_NAME} SHARED ${OFFLINE_SCANNET_SOURCES})
 find_package(OpenCV 4 REQUIRED)
 include_directories(${OpenCV_INCLUDE_DIRS})
 
-target_link_libraries(${PLUGIN_NAME} ${OpenCV_LIBS})
+target_link_libraries(${PLUGIN_NAME} PUBLIC ${OpenCV_LIBS} Open3D::Open3D)
 message("${ILLIXR_SOURCE_DIR}")
 # Include ILLIXR headers
 target_include_directories(${PLUGIN_NAME} PRIVATE ${ILLIXR_INCLUDE_DIR})
